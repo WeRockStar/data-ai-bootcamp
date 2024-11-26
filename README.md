@@ -8,3 +8,4 @@
 - Database Client
 - MongoDB for VS Code
 - Docker
+- Markdown All in One
