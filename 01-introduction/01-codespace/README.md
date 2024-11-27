@@ -26,6 +26,10 @@
 5. เพียงเท่านี้เราก็จะได้พื้นที่ในการเขียนและรัน code บนหน้าเว็บไซต์แล้ว
 <img src="../../assets/01-codespace-workspace.png" align="left"/><br/>
 
+6. หาก code ของทีมสอนมีการ update เราสามารถ กด sync Fork ได้
+และหลังจากนั้นให้ รันคำสั้ง `git pull` เพียงเท่านี้ เราจะได้ code version ใหม่ล่าสุด
+<img src="../../assets/01-run-git-pull-after-sync-fork.png" align="left"/><br/>
+
 
 
 ## ขั้นตอนการสร้าง Codespace แบบ New Codespace
