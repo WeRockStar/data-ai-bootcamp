@@ -166,3 +166,6 @@ sa.json
 */cred/*
 */logs/*
 backup
+
+#LINE
+*line_secret.yml
