@@ -1,11 +1,12 @@
 # VSCode ใน GitHub Codespace
 
-## สารบัญ
-1. [ส่วนประกอบหลักของ VSCode](#สวนประกอบหลกของ-vscode)
-2. [การใช้งานพื้นฐาน](#การใชงานพนฐาน)
-3. [Extensions ที่แนะนำ](#extensions-ทแนะนำ)
-4. [Shortcuts ที่สำคัญ](#shortcuts-ทสำคญ)
-5. [การตั้งค่าที่ควรรู้](#การตงคาทควรร)
+## Extensions สำหรับคอร์สเรียนนี้
+- Python
+- Docker
+- Database Client JDBC
+- Jupyter
+- Black Formatter
+- Markdown All in One
 
 ## ส่วนประกอบหลักของ VSCode
 
@@ -60,26 +61,6 @@
 - Select All Occurrences: Ctrl+Shift+L
 ```
 
-## Extensions ที่แนะนำ
-
-### 1. การพัฒนาทั่วไป
-- GitHub Copilot
-- GitLens
-- Docker
-- Remote Development
-
-### 2. ภาษาเฉพาะทาง
-- Python
-- JavaScript and TypeScript
-- C/C++
-- Java Extension Pack
-
-### 3. เครื่องมือเสริม
-- Prettier
-- ESLint
-- Live Share
-- Code Spell Checker
-
 ## Shortcuts ที่สำคัญ
 
 ### การนำทาง
@@ -97,78 +78,3 @@ Ctrl+/          : Toggle comment
 Ctrl+Space      : Trigger suggestion
 F12             : Go to Definition
 ```
-
-## การตั้งค่าที่ควรรู้
-
-### 1. settings.json
-```json
-{
-    "editor.fontSize": 14,
-    "editor.tabSize": 2,
-    "editor.wordWrap": "on",
-    "editor.formatOnSave": true,
-    "files.autoSave": "afterDelay"
-}
-```
-
-### 2. การตั้งค่า Terminal
-```json
-{
-    "terminal.integrated.fontSize": 14,
-    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe"
-}
-```
-
-## เทคนิคการใช้งาน
-
-### 1. Zen Mode
-- เข้าสู่โหมดเต็มจอ: Ctrl+K Z
-- ไม่แสดง UI elements ที่ไม่จำเป็น
-- เหมาะสำหรับการโฟกัสกับโค้ด
-
-### 2. Multi-cursor Editing
-```plaintext
-- Alt+Click: เพิ่ม cursor
-- Ctrl+Alt+↑/↓: เพิ่ม cursor ด้านบน/ล่าง
-- Ctrl+D: เลือกคำที่เหมือนกันถัดไป
-```
-
-### 3. Snippets
-```json
-{
-    "Print to console": {
-        "prefix": "log",
-        "body": [
-            "console.log('$1');",
-            "$2"
-        ],
-        "description": "Log output to console"
-    }
-}
-```
-
-## การแก้ปัญหาที่พบบ่อย
-
-### 1. Performance Issues
-- ลด Extensions ที่ไม่จำเป็น
-- ล้าง Cache
-- ปิดการใช้งาน Telemetry
-
-### 2. Git Integration
-- ตรวจสอบ Git credentials
-- ใช้ Source Control panel
-- รู้จักใช้ GitLens
-
-## แหล่งข้อมูลเพิ่มเติม
-- [VSCode Documentation](https://code.visualstudio.com/docs)
-- [GitHub Codespaces Documentation](https://docs.github.com/en/codespaces)
-- [VSCode Tips and Tricks](https://code.visualstudio.com/docs/getstarted/tips-and-tricks)
-
-
----
-
-# Install Extensions
-- Python
-- Black Formatter
-- Docker
-- 

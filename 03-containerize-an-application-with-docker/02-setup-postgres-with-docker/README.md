@@ -17,7 +17,7 @@ docker run --name mypostgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=pg12
 
 ## Step 2: Connect with VSCode PostgreSQL Extension
 
-### 2.1 Install PostgreSQL Extension
+### 2.1 Install Extension
 1. Open VSCode
 2. Go to Extensions (Ctrl+Shift+X)
 3. Search for "Database Client JDBC"

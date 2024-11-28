@@ -1,5 +1,27 @@
 # การใช้งาน BigQuery บน Google Cloud Platform
 
+```bash
+pip install -r requirements.txt
+```
+rename file: `.env.example` to `.env`
+
+check region codespace: `gh api /user/codespaces/$CODESPACE_NAME --jq .location`
+
+go to: https://console.cloud.google.com/bigquery?project=dataaibootcamp
+project: `dataaibootcamp`
+create dataset: `dataai_<name>_<yyyy>`
+  - Location Type: `Region`
+  - Region: `asia-southeast1`
+  - CREATE DATASET
+create table:
+  - Create table from: `Upload`
+  - Source format: `CSV`
+  - Upload file: `house-price.csv`
+  - Table: `house_price`
+  - Schema: Auto detect
+  - CREATE TABLE
+
+
 ## BigQuery คืออะไร
 BigQuery เป็นบริการ Data Warehouse แบบ Serverless ของ Google Cloud Platform ที่ช่วยให้คุณสามารถวิเคราะห์ข้อมูลขนาดใหญ่ได้อย่างรวดเร็ว
 

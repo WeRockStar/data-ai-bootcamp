@@ -3,29 +3,16 @@
 ผมจะแก้ไขไฟล์ README.md ให้ใช้ Docker Compose แทน โดยมีการเปลี่ยนแปลงหลักๆดังนี้:
 
 ````markdown:03-containerize-an-application-with-docker/03-setup-mongo/README.md
-# MongoDB Data Setup Guide
-## Step 1: Setup MongoDB Using Docker Compose
 
-### 1.1 สร้างไฟล์ compose.yml
-```yaml
-version: '3.8'
-services:
-  mongodb:
-    image: mongo:8.0
-    container_name: mymongo
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_PASSWORD=mongo1234
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongodb_data:/data/db
-
-volumes:
-  mongodb_data:
+# ทดสอบรัน Local
+```bash
+pip install -r requirements.txt
+python main.py
 ```
 
-### 1.2 รันคำสั่งเพื่อสร้างและเริ่มต้น Container
+# MongoDB Data Setup Guide
+## Step 1: Setup MongoDB Using Docker Compose
+### รันคำสั่งเพื่อสร้างและเริ่มต้น Container
 ```bash
 docker compose up -d
 ```

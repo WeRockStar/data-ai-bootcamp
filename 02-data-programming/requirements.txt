@@ -1,4 +1,5 @@
-ipython-sql
-SQLAlchemy
-pandas
-python-dotenv
+ipykernel==6.29.5
+ipython-sql==0.5.0
+SQLAlchemy==2.0.36
+pandas==2.2.3
+python-dotenv==1.0.1

@@ -9,20 +9,3 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: mg1234
     ports:
       - "27017:27017"
-
-  postgres:
-    image: postgres:13
-    container_name: mypostgres
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: pg1234
-      POSTGRES_DB: postgres
-    ports:
-      - "5432:5432"
-
-  myapp:
-    build: .
-    container_name: myapp
-    depends_on:
-      - mongodb
-      - postgres

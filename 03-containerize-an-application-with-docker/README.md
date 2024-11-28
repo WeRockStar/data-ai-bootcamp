@@ -1,5 +1,8 @@
 # 02-docker
 
+## โจทย์
+- ถ้าเราไม่มี data จะ mock ข้อมูลได้อย่างไร?
+  
 ## Concept Docker
 - Dockerfile
 - Image

@@ -3,9 +3,28 @@ services:
   mongodb:
     image: mongo:8.0
     restart: always
-    container_name: mongodb
+    container_name: mymongodb
     environment:
       MONGO_INITDB_ROOT_USERNAME: mongo
       MONGO_INITDB_ROOT_PASSWORD: mg1234
     ports:
       - "27017:27017"
+
+  postgres:
+    image: postgres:13
+    container_name: mypostgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pg1234
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+
+  myapp:
+    build: .
+    container_name: myapp
+    restart: always
+    depends_on:
+      - mongodb
+      - postgres
