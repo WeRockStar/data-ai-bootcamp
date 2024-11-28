@@ -163,3 +163,12 @@ F12             : Go to Definition
 - [VSCode Documentation](https://code.visualstudio.com/docs)
 - [GitHub Codespaces Documentation](https://docs.github.com/en/codespaces)
 - [VSCode Tips and Tricks](https://code.visualstudio.com/docs/getstarted/tips-and-tricks)
+
+
+---
+
+# Install Extensions
+- Python
+- Black Formatter
+- Docker
+- 

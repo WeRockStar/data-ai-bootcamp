@@ -32,3 +32,8 @@ docker compose up
 | `cred/` | โฟลเดอร์ที่เก็บไฟล์ Credential หรือ Configuration อย่างไฟล์ `sa.json` |
 | `tests/` | โฟลเดอร์ที่เก็บไฟล์ unitest เพื่อทำการทดสอบ python code |
 
+
+# Reference
+- [Airflow 2.10 Documentation](https://airflow.apache.org/docs/apache-airflow/stable/index.html)
+- [Airflow 2.10 Docker Compose File](https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html)
+- [Airflow 2.10 Docker Compose File](https://airflow.apache.org/docs/apache-airflow/2.10.3/docker-compose.yaml)
