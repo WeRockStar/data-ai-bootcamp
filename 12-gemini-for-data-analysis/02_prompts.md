@@ -22,8 +22,8 @@ Prompts:
 - Summary product category in each DC
 
 ## Events
-- count total users group by trafic source , country 
-- สรุปจำนวน event จาก trafic source , ทุก event_type, browsrer
+- count unique total users group by trafic source , country where user id is not empty
+- สรุปจำนวน event จาก trafic source , ทุก event_type, browser
 
 ## Products
 | Query Prompt | Visualization Prompts |
@@ -40,7 +40,7 @@ Prompts:
 | - | - |
 | Analyze which product category have order sale volume and frequency | - |
 | product category sales| - |
-| Product category cancellation and return | - |
+| Total sale volume by category where order status is Cancelled or Returned. sort by highest total sale volume | - |
 
 
 ### References:
