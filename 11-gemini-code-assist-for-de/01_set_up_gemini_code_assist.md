@@ -1,7 +1,5 @@
 # 1. Set up Google Cloud Platform Environment
 
-### ** สามารถทำก่อนเข้าห้องเรียนได้ แต่ในห้องจะมีอีกรอบค่ะ :) 
-
 การ Set up Google Cloud Platform Environment เป็นการเตรียมความพร้อมทั้งในเรื่องของโปรเจกต์, บริการที่ต้องการใช้, รวมถึงการตั้งค่า Credential และ Environment ต่าง ๆ ที่เกี่ยวข้อง เพื่อให้พร้อมใช้งานอย่างเต็มรูปแบบ โดยมีขั้นตอนดังนี้:
 
 [1.0 Create New GCP Project]()  
@@ -21,7 +19,7 @@
 
 1. **ไปที่หน้า Google Cloud Console**
 2. **กรอกข้อมูลโปรเจคใหม่:**
-    - **Project Name**: ใส่ชื่อโปรเจคใหม่ที่ต้องการ (เช่น `Beat Gemini Code Assist`)
+    - **Project Name**: ใส่ชื่อโปรเจคใหม่ที่ต้องการ (เช่น `My Gemini Code Assist`)
     - **Project ID**: กำหนด `project_id` (หรือใช้ค่าที่แนะนำโดย Google)
     - **Billing Account**: เลือกบัญชี Billing ที่ต้องการเชื่อมต่อ (หากยังไม่มี ให้สร้าง Billing Account ใหม่)
 3. **คลิก `Create`** เพื่อสร้างโปรเจคใหม่
@@ -49,7 +47,7 @@ gcloud services enable cloudshell.googleapis.com
 ประกาศตัวแปรเพื่อการ Setup 
 
 - `[YOUR_PROJECT_ID]` ให้แก้เป็นชื่อ project ที่เราใช้ทำงาน
-- `[YOUR_NAME]` ให้แก้ไขชื่อ Bucket ที่จะสร้าง เป็นชื่อตัวเอง เช่น `deb-gemini-code-assist-beat`
+- `[YOUR_NAME]` ให้แก้ไขชื่อ Bucket ที่จะสร้าง เป็นชื่อตัวเอง เช่น `data-ai-beat-1991`
 
 ```jsx
 export PROJECT_ID="[YOUR_PROJECT_ID]"
