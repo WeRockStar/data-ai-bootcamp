@@ -39,7 +39,7 @@ The DAG runs every Monday, Wednesday, and Friday at midnight.
 
 **Configuration:**
 
-- Replace `deb-gemini-code-assist-beat-99` with your actual GCS bucket name.
+- Replace `data-ai-beat-1991` with your actual GCS bucket name.
 - Ensure that the BigQuery table `gemini_assist_workshop.coingecko_price` exists or is created.
 
 **Notes:**
@@ -92,13 +92,13 @@ with DAG(
     collect_data_task = PythonOperator(
         task_id='collect_coingecko_data',
         python_callable=collect_coingecko_data,
-        op_kwargs={'bucket_name': 'deb-gemini-code-assist-beat-99'},  # Replace with your bucket name
+        op_kwargs={'bucket_name': 'data-ai-beat-1991'},  # Replace with your bucket name
     )
 
     # Task 2: Load data from GCS to BigQuery
     load_to_bq_task = GCSToBigQueryOperator(
         task_id='load_to_bigquery',
-        bucket='deb-gemini-code-assist-beat-99',  # Replace with your bucket name
+        bucket='data-ai-beat-1991',  # Replace with your bucket name
         source_objects=['raw/coingecko/*.json'],  # Load all JSON files in the folder
         destination_project_dataset_table='gemini_assist_workshop.coingecko_price',
         write_disposition='WRITE_APPEND',  # Append data to the table
