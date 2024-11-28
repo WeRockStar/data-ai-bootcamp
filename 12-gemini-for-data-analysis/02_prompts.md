@@ -13,10 +13,10 @@
 Prompts:
 | Query Prompt | Visualization Prompts |
 | - | - |
-|Find cancel rate based on gender| -|
-| For all order, find ratio of each order status | Stacked bar chart by month |
-| For each month, find total_revenue, total_items, total_purchasers, total_orders where the order not Cancelled or Returned| Line chart by month |
-|For Shipped Orders, find average, min, max, lead time in day before Shipped| - |
+| Find Cancelled rate based on gender | -|
+| For all order, find ratio of each order status per total order | Stacked bar chart by month |
+| For each month, find total_revenue, total_items, total_purchasers, total_orders where the order not Cancelled or Returned. Please sort the result with month. Also noted that total revenue retail price multiply with num_of_item | Line chart by month |
+|For Shipped Orders, find average, min, max, lead time in hour before Shipped. Check status need to be 'Shipped' and lead time are higher than 0| - |
 
 ## Distribution Centers
 - Summary product category in each DC
