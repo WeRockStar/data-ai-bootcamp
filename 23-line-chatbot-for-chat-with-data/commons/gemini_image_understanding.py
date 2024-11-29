@@ -5,7 +5,7 @@ import vertexai
 import vertexai.generative_models as genai
 
 GCP_PROJECT_ID = os.environ["GCP_PROJECT_ID"]
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "privates/sa.json"
+# os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "privates/sa.json"
 
 
 def gemini_describe_image(user_id, message_id):

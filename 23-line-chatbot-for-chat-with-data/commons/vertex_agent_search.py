@@ -8,7 +8,7 @@ from google.protobuf.json_format import MessageToDict
 GCP_PROJECT_ID = os.environ["GCP_PROJECT_ID"]
 APP_LOCATION = os.environ["VERTEX_SEARCH_LOCATION"]
 VERTEX_ENGINE = os.environ["VERTEX_SEARCH_ID"]
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "privates/sa.json"
+# os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "privates/sa.json"
 
 
 def vertex_search_retail_products(
