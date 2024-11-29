@@ -144,9 +144,8 @@ flex_message = generate_crypto_flex(crypto_data)
 
 outer_lib_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../"))
 sys.path.append(outer_lib_path)
-from commons.yaml_env import load_yaml_to_env
-
-load_yaml_to_env("line_secret.yml")
+from commons.manage_secret import load_secrets
+load_secrets("line_secret.yml")
 
 configuration = Configuration(access_token=os.getenv("CHANNEL_ACCESS_TOKEN"))
 
