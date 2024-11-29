@@ -1,5 +1,4 @@
 import json
-
 from commons.vertex_agent_search import vertex_search_retail_products
 from commons.dialogflowcx_answer import detect_intent_text
 from commons.flex_message_builder import build_flex_carousel_message
@@ -7,39 +6,21 @@ from commons.flex_message_builder import build_flex_carousel_message
 from linebot.v3.messaging import (
     ReplyMessageRequest,
     TextMessage,
-    LocationMessage,
-    StickerMessage,
-    ImageMessage,
     TemplateMessage,
     FlexMessage,
     Emoji,
     QuickReply,
     QuickReplyItem,
-    ConfirmTemplate,
-    ButtonsTemplate,
     CarouselTemplate,
     CarouselColumn,
-    ImageCarouselTemplate,
-    ImageCarouselColumn,
-    FlexBubble,
-    FlexImage,
-    FlexBox,
-    FlexText,
-    FlexIcon,
-    FlexButton,
-    FlexSeparator,
     FlexContainer,
     MessageAction,
     URIAction,
     PostbackAction,
     CameraAction,
     CameraRollAction,
-    ShowLoadingAnimationRequest,
 )
 
-
-with open("privates/data/image_paths.json") as file:
-    image_paths = json.load(file)
 
 
 def handle_text_by_keyword(event, line_bot_api):
