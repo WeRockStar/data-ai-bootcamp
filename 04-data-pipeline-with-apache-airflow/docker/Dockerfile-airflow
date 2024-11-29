@@ -5,4 +5,9 @@ RUN pip install apache-airflow-providers-common-sql>=1.7.2 \
                                 apache-airflow-providers-google==11.0.0 \
                                 faker==33.0.0 \
                                 apache-airflow-providers-mongo==4.2.2 \
-                                apache-airflow-providers-postgres==5.14.0
+                                apache-airflow-providers-postgres==5.14.0 \
+                                google-cloud==0.34.0 \
+                                pandas-gbq==0.24.0  \
+                                pendulum==3.0.0 \
+                                psycopg2-binary==2.9.10 \
+                                python-dotenv==1.0.1

@@ -2,7 +2,7 @@
 
 ## โจทย์
 - app เราจะรันได้ทุกที่ไหม?
-- libs จะ
+- libs จะชนกับ app อื่นๆไหม?
   
 ## Concept Docker
 - Dockerfile
