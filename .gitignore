@@ -168,6 +168,7 @@ sa.json
 backup
 *.db
 *sa.json
+04-data-pipeline-with-apache-airflow/dags/coingecko_api_with_line_notify.py
 
 #LINE
 *line_secret.yml
