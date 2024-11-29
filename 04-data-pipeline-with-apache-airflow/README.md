@@ -35,7 +35,31 @@ docker compose up -d --build
 | `cred/` | โฟลเดอร์ที่เก็บไฟล์ Credential หรือ Configuration อย่างไฟล์ `sa.json` |
 | `tests/` | โฟลเดอร์ที่เก็บไฟล์ unitest เพื่อทำการทดสอบ python code |
 
+## Airflow Connection
+`Admin` -> `Connections`
+
+### Postgres
+- Connection Id: `pg_conn`
+- Connection Type: `Postgres`
+- Host: `terminal > ifconfig > eth0 > inet` ex. `10.0.0.85`
+- Login: `postgres`
+- Password: `pg1234`
+- Port: `5432`
+
+## Mongo
+- Connection Id: `mg_conn`
+- Connection Type: `Mongo`
+- Host: `terminal > ifconfig > eth0 > inet` ex. `10.0.0.85`
+- Login: `mongo`
+- Password: `mg1234`
+- Port: `27017`
+
+### Bigquery
+- Connection Id: `gcp_conn`
+- Connection Type: `Google Cloud`
+- Keyfile Path: `/opt/airflow/cred/sa.json`
 
 # Reference
 - [Airflow 2.10 Documentation](https://airflow.apache.org/docs/apache-airflow/stable/index.html)
 - [Airflow 2.10 Docker Compose File](https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html)
+- [Bigquery Operator](https://airflow.apache.org/docs/apache-airflow-providers-google/stable/_api/airflow/providers/google/cloud/operators/bigquery/index.html)

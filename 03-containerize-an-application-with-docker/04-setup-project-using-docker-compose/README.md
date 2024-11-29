@@ -7,7 +7,7 @@ docker rm <container_name>
 ```
 ## run docker compose
 ```bash
-docker compose up -d --build
+docker-compose up -d --build
 ```
 
 ## Congratulation!!

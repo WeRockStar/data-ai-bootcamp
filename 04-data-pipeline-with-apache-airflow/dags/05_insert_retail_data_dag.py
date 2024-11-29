@@ -119,51 +119,52 @@ def generate_promotions(num_records=100):
 
 def load_to_postgres(df, table_name):
     """Load DataFrame to PostgreSQL"""
-    postgres_hook = PostgresHook(postgres_conn_id="postgres_default")
+    postgres_hook = PostgresHook(postgres_conn_id="pg_conn")
     df.to_sql(
         table_name,
         postgres_hook.get_sqlalchemy_engine(),
         if_exists="append",
         chunksize=1000,
+        index=False,
     )
     print(f"Loaded {len(df)} records to {table_name}")
 
 
 def create_and_load_orders():
     df = generate_orders()
-    load_to_postgres(df, "orders")
+    load_to_postgres(df, "orders05")
 
 
 def create_and_load_products():
     df = generate_products()
-    load_to_postgres(df, "products")
+    load_to_postgres(df, "products05")
 
 
 def create_and_load_customers():
     df = generate_customers()
-    load_to_postgres(df, "customers")
+    load_to_postgres(df, "customers05")
 
 
 def create_and_load_stores():
     df = generate_stores()
-    load_to_postgres(df, "stores")
+    load_to_postgres(df, "stores05")
 
 
 def create_and_load_inventory():
     df = generate_inventory()
-    load_to_postgres(df, "inventory")
+    load_to_postgres(df, "inventory05")
 
 
 def create_and_load_promotions():
     df = generate_promotions()
-    load_to_postgres(df, "promotions")
+    load_to_postgres(df, "promotions05")
 
 
 with DAG(
-    "retail_data_pipeline",
+    dag_id="05_insert_retail_data_dag",
     default_args=default_args,
     start_date=pendulum.datetime(2024, 1, 1, tz="Asia/Bangkok"),
-    schedule_interval=timedelta(minutes=2),
+    schedule_interval=timedelta(minutes=10),
     catchup=False,
     tags=["retail", "data_generation"],
 ) as dag:
@@ -196,8 +197,7 @@ with DAG(
     # Set dependencies
     (
         order_task
-        >> product_task
-        >> customer_task
+        >> [product_task, customer_task]
         >> store_task
         >> inventory_task
         >> promotion_task

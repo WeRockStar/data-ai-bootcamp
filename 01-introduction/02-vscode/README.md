@@ -3,7 +3,7 @@
 ## Extensions สำหรับคอร์สเรียนนี้
 - Python
 - Docker
-- Database Client JDBC
+- Database Client
 - Jupyter
 - Black Formatter
 - Markdown All in One

@@ -46,10 +46,11 @@ def load_to_postgres(**context):
         key="customers", task_ids="generate_customers"
     )
     df = pd.DataFrame(customers)
-    postgres_hook = PostgresHook(postgres_conn_id="postgres_default")
+    postgres_hook = PostgresHook(postgres_conn_id="pg_conn")
     df.to_sql(
-        "customers",
+        "customer_airflow",
         postgres_hook.get_sqlalchemy_engine(),
+        index=False,
         if_exists="append",
         chunksize=1000,
     )
@@ -57,7 +58,7 @@ def load_to_postgres(**context):
 
 
 with DAG(
-    "retail_data_pipeline",
+    dag_id="03_insert_to_postgres_dag",
     default_args=default_args,
     schedule_interval="@daily",
     catchup=False,
@@ -67,9 +68,9 @@ with DAG(
     # สร้างตาราง customers ถ้ายังไม่มี
     create_table = PostgresOperator(
         task_id="create_customers_table",
-        postgres_conn_id="postgres_default",
+        postgres_conn_id="pg_conn",
         sql="""
-            CREATE TABLE IF NOT EXISTS customers (
+            CREATE TABLE IF NOT EXISTS customer_airflow (
                 id SERIAL PRIMARY KEY,
                 customer_id VARCHAR(255),
                 first_name VARCHAR(100),
