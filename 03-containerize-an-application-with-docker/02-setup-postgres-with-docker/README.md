@@ -20,11 +20,11 @@ docker run --name mypostgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=pg12
 ### 2.1 Install Extension
 1. Open VSCode
 2. Go to Extensions (Ctrl+Shift+X)
-3. Search for "Database Client JDBC"
-4. Install "Database Client JDBC"
+3. Search for "Database Client"
+4. Install "Database Client"
 
 ### 2.2 Connect to Database
-1. Open "Database Client JDBC" extension in VSCode
+1. Open "Database Client" extension in VSCode
 2. Click "Add Connection"
 3. Select Server Type: PostgreSQL
 4. Enter connection details:
@@ -48,7 +48,7 @@ CREATE TABLE customers (
 );
 ```
 
-### 2.4 Insert Initial Data
+### 2.4 Insert Initial Data (init_pg.sql)
 ```sql
 INSERT INTO customers (
     customer_id, name, email, phone, 
@@ -69,6 +69,8 @@ INSERT INTO customers (
 
 ### 3.1 Install Required Libraries
 ```bash
+cd /workspaces/data-ai-bootcamp/03-containerize-an-application-with-docker/02-setup-postgres-with-docker
+
 pip install -r requirements.txt
 ```
 

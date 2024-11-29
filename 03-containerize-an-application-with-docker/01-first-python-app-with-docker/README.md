@@ -2,7 +2,10 @@
 
 ## Try to run the app
 ```bash
+cd /workspaces/data-ai-bootcamp/03-containerize-an-application-with-docker/01-first-python-app-with-docker
+
 pip install -r requirements.txt
+
 python main.py
 # ctrl + c to stop the app
 ```
@@ -10,6 +13,9 @@ python main.py
 
 ## Containerize the app
 ```bash
+# check version docker
+docker --version
+
 # Build the image
 docker build -t myapp .
 
@@ -34,3 +40,5 @@ docker rm generate-customer-data
 # Remove the image
 docker rmi myapp
 ```
+
+## Congratulation!!

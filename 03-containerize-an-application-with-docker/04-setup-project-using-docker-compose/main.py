@@ -46,7 +46,7 @@ def generate_product():
         "stock": random.randint(0, 100),
         "manufacturer": fake.company(),
         "sku": fake.ean13(),
-        "created_at": pendulum.now("Asia/Bangkok").strftime("%Y-%m-%d %H:%M:%S"),
+        "created_at": pendulum.now("Asia/Bangkok"),
         "rating": round(random.uniform(1, 5), 1),
         "reviews_count": random.randint(0, 1000),
     }
@@ -66,7 +66,7 @@ def generate_customer(num: int):
             "segment": fake.random_element(
                 ["Retail", "Wholesale", "Online", "In-Store"]
             ),
-            "join_date": pendulum.now("Asia/Bangkok").strftime("%Y-%m-%d %H:%M:%S"),
+            "join_date": pendulum.now("Asia/Bangkok"),
             "loyalty_points": fake.random_int(min=0, max=1000),
         }
         customers.append(customer)

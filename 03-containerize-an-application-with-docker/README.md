@@ -1,7 +1,8 @@
 # 02-docker
 
 ## โจทย์
-- ถ้าเราไม่มี data จะ mock ข้อมูลได้อย่างไร?
+- app เราจะรันได้ทุกที่ไหม?
+- libs จะ
   
 ## Concept Docker
 - Dockerfile
