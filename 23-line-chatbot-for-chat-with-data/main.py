@@ -66,7 +66,6 @@ def callback(request):
 
 @handler.add(MessageEvent, message=TextMessageContent)
 def handle_text_message(event):
-    print("x")
     line_bot_api.show_loading_animation_with_http_info(
         ShowLoadingAnimationRequest(chat_id=event.source.user_id)
     )
