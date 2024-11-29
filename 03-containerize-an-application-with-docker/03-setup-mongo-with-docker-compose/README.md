@@ -22,11 +22,11 @@ docker compose up -d
 ### 2.1 ติดตั้ง MongoDB Extension
 1. เปิด VSCode
 2. ไปที่ Extensions (Ctrl+Shift+X)
-3. ค้นหา "Database Client JDBC"
-4. ติดตั้ง Extension "Database Client JDBC"
+3. ค้นหา "Database Client"
+4. ติดตั้ง Extension "Database Client"
 
 ### 2.2 เชื่อมต่อฐานข้อมูล
-1. เปิด "Database Client JDBC" extension ใน VSCode
+1. เปิด "Database Client" extension ใน VSCode
 2. คลิก "Connect"
 3. ใส่ connection string:
    ```

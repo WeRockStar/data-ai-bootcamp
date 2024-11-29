@@ -1,2 +1,4 @@
+SQLAlchemy==2.0.36
+pandas==2.2.3
 faker==33.0.0
 pendulum==3.0.0
