@@ -1,5 +1,8 @@
+# Apache Airflow 
 
-## 2. Apache Airflow 
+```bash
+cd /workspaces/data-ai-bootcamp/04-data-pipeline-with-apache-airflow
+```
 
 ```sh
 mkdir -p ./dags ./logs ./plugins ./tests ./cred
@@ -12,7 +15,7 @@ echo -e "AIRFLOW_UID=$(id -u)" > .env
 ```
 
 ```sh
-docker compose up
+docker compose up -d --build
 ```
 
 #### Docker Commands
@@ -36,4 +39,3 @@ docker compose up
 # Reference
 - [Airflow 2.10 Documentation](https://airflow.apache.org/docs/apache-airflow/stable/index.html)
 - [Airflow 2.10 Docker Compose File](https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html)
-- [Airflow 2.10 Docker Compose File](https://airflow.apache.org/docs/apache-airflow/2.10.3/docker-compose.yaml)
