@@ -167,6 +167,7 @@ sa.json
 */logs/*
 backup
 *.db
+*sa.json
 
 #LINE
 *line_secret.yml

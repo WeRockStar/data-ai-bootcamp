@@ -4,10 +4,6 @@ from google.protobuf.json_format import MessageToDict
 
 
 def detect_intent_text(text, session_id, language_code="th"):
-    GCP_PROJECT_ID = os.environ["GCP_PROJECT_ID"]
-    APP_LOCATION = os.environ["VERTEX_AGENT_LOCATION"]
-    VERTEX_ENGINE = os.environ["VERTEX_AGENT_ID"]
-    # os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "privates/sa.json"
 
     agent = f"projects/{GCP_PROJECT_ID}/locations/{APP_LOCATION}/agents/{VERTEX_ENGINE}"
     session_path = f"{agent}/sessions/{session_id}"
@@ -36,3 +32,12 @@ def detect_intent_text(text, session_id, language_code="th"):
         ]["actions"][2]["agentUtterance"]["text"]
 
     return response_messages
+
+if __name__ == "__main__":
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "sa.json"
+    GCP_PROJECT_ID = "GCP_PROJECT_ID"
+    APP_LOCATION = "APP_LOCATION"
+    VERTEX_ENGINE = "VERTEX_ENGINE"
+    search_query = "แนะนำครีมกันแดดหน่อย"
+    results = detect_intent_text(search_query=search_query)
+    print(results)

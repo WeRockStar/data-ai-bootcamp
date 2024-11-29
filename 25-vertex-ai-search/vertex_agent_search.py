@@ -5,12 +5,6 @@ from google.cloud import discoveryengine_v1 as discoveryengine
 from google.protobuf.json_format import MessageToDict
 
 
-GCP_PROJECT_ID = os.environ["GCP_PROJECT_ID"]
-APP_LOCATION = os.environ["VERTEX_SEARCH_LOCATION"]
-VERTEX_ENGINE = os.environ["VERTEX_SEARCH_ID"]
-# os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "privates/sa.json"
-
-
 def vertex_search_retail_products(
     search_query: str,
 ) -> List[discoveryengine.SearchResponse]:
@@ -66,5 +60,13 @@ def vertex_search_retail_products(
 
     response = client.search(request)
     response_dict = MessageToDict(response._pb)
-    print(response_dict)
     return response_dict
+
+if __name__ == "__main__":
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "sa.json"
+    GCP_PROJECT_ID = "GCP_PROJECT_ID"
+    APP_LOCATION = "APP_LOCATION"
+    VERTEX_ENGINE = "VERTEX_ENGINE"
+    search_query = "คาราบาวแดง"
+    results = vertex_search_retail_products(search_query=search_query)
+    print(results)

@@ -7,7 +7,7 @@ def detect_intent_text(text, session_id, language_code="th"):
     GCP_PROJECT_ID = os.environ["GCP_PROJECT_ID"]
     APP_LOCATION = os.environ["VERTEX_AGENT_LOCATION"]
     VERTEX_ENGINE = os.environ["VERTEX_AGENT_ID"]
-    # os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "privates/sa.json"
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "privates/sa.json"
 
     agent = f"projects/{GCP_PROJECT_ID}/locations/{APP_LOCATION}/agents/{VERTEX_ENGINE}"
     session_path = f"{agent}/sessions/{session_id}"

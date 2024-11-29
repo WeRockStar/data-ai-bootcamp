@@ -58,7 +58,7 @@ with DAG(
     default_args=default_args,
     description='Collect data from CoinGecko API and send LINE notify',
     schedule_interval='*/2 * * * *',  # Run every 2 minutes
-    start_date=datetime(2024, 11, 30),
+    start_date=datetime(2024, 11, 20),
     catchup=False,
     doc_md = __doc__
 ) as dag:
