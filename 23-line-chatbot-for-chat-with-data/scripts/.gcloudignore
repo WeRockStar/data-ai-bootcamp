@@ -1,4 +1,0 @@
-scripts/init.sh
-scripts/deploy.sh
-scripts/local_run.sh
-*.example
