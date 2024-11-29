@@ -36,18 +36,3 @@ def detect_intent_text(text, session_id, language_code="th"):
         ]["actions"][2]["agentUtterance"]["text"]
 
     return response_messages
-
-
-if __name__ == "__main__":
-    import uuid
-    from manage_secret import load_secrets
-
-    load_secrets(
-        "/Users/punsiri/linedev/retail-chatbot-with-gemini/webhook_handler/scripts/line_secret.yml"
-    )
-    os.environ[
-        "GOOGLE_APPLICATION_CREDENTIALS"
-    ] = "/Users/punsiri/linedev/retail-chatbot-with-gemini/webhook_handler/privates/sa.json"
-
-    session_id = str(uuid.uuid4())
-    response = detect_intent_text("ลดราคาไร", session_id=session_id)

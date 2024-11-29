@@ -14,4 +14,5 @@ gcloud functions deploy $FUNCTION_NAME \
     --entry-point=$ENTRY_POINT \
     --allow-unauthenticated \
     --env-vars-file=scripts/line_secret.yml \
-    --timeout=300
+    --timeout=300 \
+    --memory=512MiB

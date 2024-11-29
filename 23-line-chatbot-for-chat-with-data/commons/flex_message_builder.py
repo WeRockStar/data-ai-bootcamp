@@ -14,14 +14,10 @@ from linebot.v3.messaging import (
 def build_flex_carousel_message(
     line_bot_api, event, response_dict, search_query, additional_explain=None
 ):
-    with open("templates/flex_product_bubble.json") as file:
-        product_bubble_temple = file.read()
-        summary_text = response_dict["summary"]["summaryText"]
-
     result_products_list = []
-    with open("templates/flex_product_bubble.json") as file:
-        product_bubble_temple = file.read()
-
+    product_bubble_temple = open("templates/flex_product_bubble.json").read()
+    summary_text = response_dict["summary"]["summaryText"]
+    
     for idx, result in enumerate(response_dict["results"]):
         product_name = result["document"]["structData"]["name"]
         product_price = result["document"]["structData"]["price"]
