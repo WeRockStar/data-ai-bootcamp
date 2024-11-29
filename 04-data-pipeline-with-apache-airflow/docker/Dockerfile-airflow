@@ -1,6 +1,8 @@
 FROM --platform=linux/amd64 apache/airflow:2.9.3
 
-RUN pip install --no-cache-dir airflow-provider-great-expectations==0.2.7 \
-                                apache-airflow-providers-google==10.23.0 \
-                                apache-airflow-providers-common-sql>=1.7.2 \
-                                lin-bot-sdk
+RUN pip install apache-airflow-providers-common-sql>=1.7.2 \
+                                line-bot-sdk==3.14.2 \
+                                apache-airflow-providers-google==11.0.0 \
+                                faker==33.0.0 \
+                                apache-airflow-providers-mongo==4.2.2 \
+                                apache-airflow-providers-postgres==5.14.0
