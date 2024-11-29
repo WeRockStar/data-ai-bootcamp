@@ -1,3 +1,4 @@
+###### GEMINI IMAGE UNDERSTANDING #######################################################
 # upload_blob_from_memory(
 #     contents=message_content,
 #     user_id=event.source.user_id,
@@ -17,6 +18,11 @@
 #             messages=[TextMessage(text=str(json))],
 #         )
 #     )
+##########################################################################################
+##########################################################################################
+
+
+###### VERTEXT SEARCH FROM IMAGE  ##########
 
 #     response_dict = vertex_search_retail_products(
 #         image_description["product_description"]
@@ -28,3 +34,4 @@
 #         search_query=image_description["product_description"],
 #         additional_explain=image_description["explaination"],
 #     )
+##########################################################################################

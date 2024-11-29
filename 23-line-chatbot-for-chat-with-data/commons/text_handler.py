@@ -29,7 +29,7 @@ def handle_text_by_keyword(event, line_bot_api):
     if text == "my_profile":
         profile = line_bot_api.get_profile(user_id=event.source.user_id)
 
-        with open("flex_msgs/profile_bubble.json") as profile_bubble_json:
+        with open("templates/profile_bubble.json") as profile_bubble_json:
             profile_bubble = profile_bubble_json.read()
             profile_bubble = (
                 profile_bubble.replace("USER_PROFILE_URL", profile.picture_url)
