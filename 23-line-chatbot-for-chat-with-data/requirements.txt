@@ -1,9 +1,7 @@
-functions-framework
+functions-framework==3.8.2
 line-bot-sdk==3.13.0
-pandas
 google-cloud-discoveryengine==0.12.3
-google-cloud-storage
-vertexai
+google-cloud-storage==2.18.2
+vertexai==1.71.1
 google-cloud-dialogflow-cx==1.36.0
-google-cloud-speech
 

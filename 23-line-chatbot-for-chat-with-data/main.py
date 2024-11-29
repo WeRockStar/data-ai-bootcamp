@@ -1,6 +1,5 @@
 import os
 import functions_framework
-from urllib.parse import parse_qs
 
 from linebot.v3 import WebhookHandler
 from linebot.v3.exceptions import InvalidSignatureError
@@ -11,7 +10,6 @@ from linebot.v3.webhooks import (
     StickerMessageContent,
     ImageMessageContent,
     AudioMessageContent,
-    PostbackEvent,
 )
 from linebot.v3.messaging import (
     Configuration,
@@ -19,14 +17,12 @@ from linebot.v3.messaging import (
     MessagingApi,
     MessagingApiBlob,
     ReplyMessageRequest,
-    PushMessageRequest,
     TextMessage,
     StickerMessage,
     FlexMessage,
     FlexContainer,
     ShowLoadingAnimationRequest,
 )
-
 
 from commons.gcs_utils import upload_blob_from_memory
 from commons.text_handler import handle_text_by_keyword
@@ -36,13 +32,10 @@ from commons.flex_message_builder import build_flex_carousel_message
 
 
 
-YOUR_CHANNEL_ACCESS_TOKEN = os.environ["YOUR_CHANNEL_ACCESS_TOKEN"]
-YOUR_CHANNEL_SECRET = os.environ["YOUR_CHANNEL_SECRET"]
+YOUR_CHANNEL_ACCESS_TOKEN = os.environ["CHANNEL_ACCESS_TOKEN"]
+YOUR_CHANNEL_SECRET = os.environ["CHANNEL_SECRET"]
 
-
-configuration = Configuration(
-    access_token=YOUR_CHANNEL_ACCESS_TOKEN,
-)
+configuration = Configuration(access_token=YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
 # Create a global API client instance
@@ -73,6 +66,7 @@ def callback(request):
 
 @handler.add(MessageEvent, message=TextMessageContent)
 def handle_text_message(event):
+    print("x")
     line_bot_api.show_loading_animation_with_http_info(
         ShowLoadingAnimationRequest(chat_id=event.source.user_id)
     )

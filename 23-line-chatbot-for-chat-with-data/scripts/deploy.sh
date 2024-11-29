@@ -3,6 +3,7 @@ gcloud config set project $PROJECT_ID
 
 echo "GCP Project ID: $PROJECT_ID"
 echo "Function Name: $FUNCTION_NAME"
+echo "Entry Point: $ENTRY_POINT"
 
 gcloud functions deploy $FUNCTION_NAME \
     --gen2 \
