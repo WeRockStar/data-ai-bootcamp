@@ -3,17 +3,17 @@
 ```bash
 pip install -r requirements.txt
 ```
-rename file: `.env.example` to `.env`
 
 check region codespace: `gh api /user/codespaces/$CODESPACE_NAME --jq .location`
 
-go to: https://console.cloud.google.com/bigquery?project=dataaibootcamp
-project: `dataaibootcamp`
-create dataset: `dataai_<name>_<yyyy>`
+## Quick start
+- go to: https://console.cloud.google.com/bigquery?project=dataaibootcamp
+- project: `dataaibootcamp`
+- create dataset: `dataai_<name>_<yy>`
   - Location Type: `Region`
   - Region: `asia-southeast1`
   - CREATE DATASET
-create table:
+- create table:
   - Create table from: `Upload`
   - Source format: `CSV`
   - Upload file: `house-price.csv`

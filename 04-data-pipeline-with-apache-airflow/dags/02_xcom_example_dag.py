@@ -3,6 +3,7 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 import pendulum
 
+
 def generate_data(**context):
     import random
 
@@ -33,7 +34,7 @@ def send_notification(**context):
 default_args = {
     "owner": "airflow",
     "depends_on_past": False,
-    "start_date": pendulum.datetime(2024, 1, 1, tz='Asia/Bangkok'),
+    "start_date": pendulum.datetime(2024, 1, 1, tz="Asia/Bangkok"),
     "retries": 1,
     "retry_delay": timedelta(minutes=1),
     "schedule_interval": timedelta(minutes=5),

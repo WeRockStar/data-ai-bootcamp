@@ -7,6 +7,8 @@ from airflow.providers.postgres.hooks.postgres import PostgresHook
 from airflow.providers.google.cloud.hooks.bigquery import BigQueryHook
 import pandas as pd
 import json
+from dotenv import load_dotenv
+_ = load_dotenv()
 
 default_args = {
     'owner': 'dataai',
@@ -19,8 +21,8 @@ PROJECT_ID = "dataaibootcamp"
 DATASET_ID = "dataai_name_yyyy"
 
 def extract(**context):
-    postgres_hook = PostgresHook(postgres_conn_id='retail_postgres')
-    df = postgres_hook.get_pandas_df(sql='SELECT * FROM retail.customers')
+    postgres_hook = PostgresHook(postgres_conn_id='pg_conn')
+    df = postgres_hook.get_pandas_df(sql='SELECT * FROM postgres.public.customers limit 100')
     
     # แปลง DataFrame เป็น JSON
     json_data = df.to_json(orient='records')
@@ -36,8 +38,13 @@ def transform(**context):
     df = pd.read_json(json_data, orient='records')
     
     # ตัวอย่างการ transform ข้อมูล
-    df['full_name'] = df['first_name'] + ' ' + df['last_name']
-    df['email_domain'] = df['email'].str.split('@').str[1]
+    df['first_name'] = df["name"].apply(lambda x: x.split()[0])
+    df['last_name'] = df["name"].apply(lambda x: x.split()[-1])
+    df["created_at"] = df["join_date"]
+    df["full_name"] = df["name"]
+    df['email_domain'] = df['email'].apply(lambda x: x.split('@')[-1])
+
+    df = df[['customer_id', 'first_name', 'last_name', 'email', 'created_at', 'full_name', 'email_domain']] 
     
     # แปลงกลับเป็น JSON และเก็บใน XCOM
     transformed_json = df.to_json(orient='records')
@@ -52,7 +59,7 @@ def load(**context):
     
     # โหลดเข้า BigQuery
     df.to_gbq(
-        destination_table=f'{DATASET_ID}.customer',
+        destination_table=f'{DATASET_ID}.customers',
         project_id=PROJECT_ID,
         if_exists='append',
         location='asia-southeast1'
@@ -72,7 +79,7 @@ with DAG(
         dataset_id=DATASET_ID,
         table_id='customer',
         schema_fields=[
-            {'name': 'customer_id', 'type': 'INTEGER', 'mode': 'REQUIRED'},
+            {'name': 'customer_id', 'type': 'STRING', 'mode': 'REQUIRED'},
             {'name': 'first_name', 'type': 'STRING', 'mode': 'NULLABLE'},
             {'name': 'last_name', 'type': 'STRING', 'mode': 'NULLABLE'},
             {'name': 'email', 'type': 'STRING', 'mode': 'NULLABLE'},
