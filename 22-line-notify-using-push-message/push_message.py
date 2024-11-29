@@ -22,7 +22,7 @@ configuration = Configuration(
 # Initialize the Messaging API client once
 with ApiClient(configuration) as api_client:
     line_bot_api = MessagingApi(api_client)
-    user_id = os.getenv("USER_ID")
+    user_id = os.getenv("LINE_USER_ID")
     line_bot_api.push_message(
         PushMessageRequest(to=user_id, messages=[TextMessage(text="PUSH! YAY! your token is work!")])
     )
