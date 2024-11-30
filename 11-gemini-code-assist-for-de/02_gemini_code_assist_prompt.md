@@ -1,5 +1,44 @@
 
-# Gemini Code Assist for Data Engineering  - Prompt 
+# Gemini Code Assist for Data Engineering  - Prompt
+
+
+## Generate unittest
+
+Prerequisites
+
+Before you begin, ensure the following:
+- Gemini Code Assist is installed: Follow the installation guide in the official documentation.
+- Configured project: Your project should be set up with a supported testing framework (e.g., pytest, unittest, etc.).
+- Access to source code: The source code to be tested should be accessible and properly structured.
+
+Step 1: Open the Code File
+- Open the file you want to create unit tests for in your preferred editor.
+- Ensure the file contains methods or classes that you intend to test.
+
+Step 2: Launch Gemini Code Assist
+- Open Gemini Code Assist within your IDE or development environment.
+- Select the Unit Test Generation feature from the main menu.
+
+Step 3: Select the Function or Class to Test
+- Highlight the specific function or class you want to test.
+- Right-click and select Generate Unit Test from the context menu (or use the shortcut specified in your environment).
+
+Step 4: Configure the Test Parameters
+- Gemini Code Assist allows you to configure the unit test generation process:
+    - Select the testing framework: Choose your preferred framework (e.g., pytest, unittest, etc.).
+    - Mocking preferences: Specify whether dependencies should be mocked automatically.
+
+Step 5: Generate the Unit Test
+- Click Generate.
+- Review the auto-generated test cases. Gemini Code Assist will create test methods.
+
+Step 6: Save and Review the Test File
+- Save the generated test file in the appropriate test directory (e.g., tests/).
+- Review the test cases to ensure they meet your project requirements.
+
+Step 7: Run the Tests
+- Execute the unit tests using your testing framework: python -m unittest tests/test_file_name.py
+- Verify that all tests pass or address any failing tests.
 
 ## DAG_1 - ingest data from API to BigQuery
 
