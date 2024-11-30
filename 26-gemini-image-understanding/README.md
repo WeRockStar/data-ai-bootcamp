@@ -23,6 +23,7 @@ pip install -r requirements.txt
 
 4. Call python ให้ Gemini ช่วอธิบายรูปภาพ
 ใช้คำสั่ง python เพื่อรันไฟล์ gemini_image_understanding.py ซึ่งเป็นสคริปต์หลักของโปรเจกต์
-``
+
+```
 python gemini_image_understanding.py
 ```
