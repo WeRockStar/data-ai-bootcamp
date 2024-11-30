@@ -18,6 +18,31 @@
 ![alt text](../assets/24-4-Select-type-GenerativeAI-Playbook.png)  
 
 
+### Tool Creations Information
+ต้องสร้างทั้งหมด 3 Tools คือ "products", "member_register" และ "promotion_campaign".
+1. products
+```
+ข้อมูลเกี่ยวกับสินค้าความงาม เช่นครีมกันแดด รองพื้น โฟมล้างหน้า ครีมทาผิวขาว ครีมทาฝ้า
+ให้ข้อมูลรายละเอียดสินค้า อย่างละเอียดเช่น 
+- ชื่อสินค้า 
+- ราคา 
+- ส่วนผสม อย่างละเอียด
+- แนะนำวิธีการใช้ ประโยชน์
+```
+
+2. member_register
+```
+การสมัครสามาชิก ซีเจ สบายการ์ด ว่ามีขั้นตอนอะไรบ้าง ต้องเตรียมเอกสารอะไรบ้าง
+```
+
+3. promotion_campaign
+```
+- ให้ข้อมูลเกี่ยวกับโปรอย่างละเอียด เช่น ชื่อโปรโมชั่น จบ เริ่มเมื่อไหร่ มีประโยชน์อย่างไร
+```
+**ขั้นตอนที่: บันทึก Tool**  คลิก "Save" เพื่อบันทึกการตั้งค่า Tool.  ทำซ้ำขั้นตอนที่ 9-12  เพื่อสร้าง Tools เพิ่มเติมตามที่ต้องการ.  ในตัวอย่างนี้  
+
+![alt text](../assets/24-12-save-tool.png) 
+
 ## Create Data Store
 5.  **ขั้นตอนที่ 5: สร้าง Data Store**  ในส่วนนี้ เราจะสร้าง Data Store เพื่อเชื่อมต่อกับแหล่งข้อมูลที่ Agent จะใช้ในการตอบคำถาม. คลิก "Create a data store".
 ![alt text](../assets/24-5-create-data-store.png)
@@ -33,22 +58,10 @@
 
 
 ### ต้องสร้างทั้งหมด 3 Data store
-1. product_pdfs : gs://vertex_ai_search_data_9999/pdf-product-infomation
-2. campaing_pdf: gs://vertex_ai_search_data_9999/สินค้าแลกแต้มรับลมหนาว.pdf
-3. member_register_pdf: gs://vertex_ai_search_data_9999/บัตรสมาชิกรูปแบบใหม่.pdf
+1. dataai_yourname_yyy_product_pdfs : gs://vertex_ai_search_data_9999/pdf-product-infomation
+2. dataai_yourname_yyy_campaing_pdf: gs://vertex_ai_search_data_9999/สินค้าแลกแต้มรับลมหนาว.pdf
+3. dataai_yourname_yyy_member_register_pdf: gs://vertex_ai_search_data_9999/บัตรสมาชิกรูปแบบใหม่.pdf
 
-## Create Tools
-9.  **ขั้นตอนที่ 9: สร้าง Tools**  หลังจากสร้าง Data Store แล้ว  เราจะสร้าง Tools เพื่อกำหนดวิธีการที่ Agent จะใช้ Data Store ในการตอบคำถาม. คลิก "Create a tool"
-
-![alt text](../assets/24-9-create-tools.png)
-
-
-10. **ขั้นตอนที่ 10: กำหนดค่า Tool**  
-- ตั้งชื่อ Tool เช่น "products", "member_register", "promotion_campaign"  
-- ใส่คำอธิบายสั้นๆ  เพื่อระบุหน้าที่ของ Tool นั้นๆ  
-- เลือก Data Store ที่เกี่ยวข้องกับ Tool นั้นๆ  เช่น  "product_pdfs", "member_register_pdf", "campaing_pdf" ตามลำดับ.
-
-![alt text](../assets/24-10-add-toolname-description-type-datastore.png) 
 
 11. **ขั้นตอนที่ 11: เลือก Model และ Prompt**
 - เลือก Model  เช่น  "gemini-1.0-pro-001"  เพื่อใช้ในการประมวลผลข้อมูลจาก Data Store.
@@ -56,32 +69,6 @@
 
 ![alt text](../assets/24-11-select-gemini-model-add-custom-prompt-for-data-store-summarize.png)
 
-12. **ขั้นตอนที่ 12: บันทึก Tool**  คลิก "Save" เพื่อบันทึกการตั้งค่า Tool.  ทำซ้ำขั้นตอนที่ 9-12  เพื่อสร้าง Tools เพิ่มเติมตามที่ต้องการ.  ในตัวอย่างนี้  
-
-![alt text](../assets/24-12-save-tool.png) 
-
-### Tool Creations Information
-ต้องสร้างทั้งหมด 3 Tools คือ "products", "member_register" และ "promotion_campaign".
-1. products
-```
-ข้อมูลเกี่ยวกับสินค้าความงาม เช่นครีมกันแดด รองพื้น โฟมล้างหน้า ครีมทาผิวขาว ครีมทาฝ้า
-ให้ข้อมูลรายละเอียดสินค้า อย่างละเอียดเช่น 
-- ชื่อสินค้า 
-- ราคา 
-- ส่วนผสม อย่างละเอียด
-- แนะนำวิธีการใช้ ประโยชน์
-```
-
-2. member_register
-```
-การสมัครสามาชิก ซีเจ สบาย
-การ์ด ว่ามีขั้นตอนอะไรบ้าง ต้องเตรียมเอกสารอะไรบ้าง
-```
-
-3. promotion_campaign
-```
-- ให้ข้อมูลเกี่ยวกับโปรอย่างละเอียด เช่น ชื่อโปรโมชั่น จบ เริ่มเมื่อไหร่ มีประโยชน์อย่างไร
-```
 
 ## Defin Playbook
 **กำหนด Playbook** Playbook คือชุดคำสั่งและเงื่อนไขที่ควบคุมการทำงานของ Agent.  ในส่วนนี้ คุณจะต้องกำหนด Goal, Instructions และตัวอย่างคำถามสำหรับการทดสอบ.

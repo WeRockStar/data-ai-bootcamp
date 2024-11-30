@@ -5,7 +5,7 @@
 ใช้คำสั่งด้านล่างเพื่อคัดลอกไฟล์นี้ไปยังโฟลเดอร์ที่ Airflow ใช้สำหรับจัดการ DAG:
 
 ```bash
-cp coingecko_api_with_line_notify.py /path/to/your/airflow/dags/
+cp coingecko_api_with_line_notify.py 04-data-pipeline-with-apache-airflow/dags/
 ```
 
 ---
