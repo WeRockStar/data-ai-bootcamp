@@ -12,6 +12,12 @@ from airflow.providers.google.cloud.transfers.gcs_to_bigquery import (
 
 log = logging.getLogger(__name__)
 
+# REPLACE_BUCKET_NAME_HERE !!!
+BUCKET_NAME = "deb-gemini-code-assist-data-ai-tao-001"
+
+# REPLACE_DESTINATION_PROJECT_DATASET_TABLE_HERE !!!
+DESTINATION_PROJECT_DATASET_TABLE = "dataai_tao_34.coingecko_price"
+
 with DAG(
     dag_id="coingecko_data_pipeline",
     schedule="@hourly",
@@ -26,7 +32,7 @@ with DAG(
 
         execution_date = kwargs['execution_date']
         filename = f"coingecko_price_{execution_date.format('YYYYMMDD')}.json"
-        bucket_name = "deb-gemini-code-assist-data-ai-tao-001"
+        bucket_name = BUCKET_NAME
         folder_name = "raw/coingecko"
 
 
@@ -50,7 +56,7 @@ with DAG(
         bucket="deb-gemini-code-assist-data-ai-tao-001",
         source_objects=["raw/coingecko/coingecko_price_*.json"], # Wildcard path
         source_format='NEWLINE_DELIMITED_JSON',
-        destination_project_dataset_table="dataai_tao_34.coingecko_price",
+        destination_project_dataset_table=DESTINATION_PROJECT_DATASET_TABLE,
         create_disposition="CREATE_IF_NEEDED",
         write_disposition="WRITE_APPEND",
         schema_update_options=["ALLOW_FIELD_ADDITION"],
