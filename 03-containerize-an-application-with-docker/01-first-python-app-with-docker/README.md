@@ -1,6 +1,7 @@
 # First Python App with Docker
 
 ## Try to run the app
+
 ```bash
 cd /workspaces/data-ai-bootcamp/03-containerize-an-application-with-docker/01-first-python-app-with-docker
 
@@ -10,8 +11,8 @@ python main.py
 # ctrl + c to stop the app
 ```
 
-
 ## Containerize the app
+
 ```bash
 # check version docker
 docker --version
