@@ -1,6 +1,6 @@
 # Data AI Bootcamp
 
-<img src="assets/poster.png"></img>
+![Poster](assets/poster.png)
 
 ## How to learn this course
 
@@ -15,5 +15,5 @@
 ## How to Create Virtual Environment
 
 ```bash
-python3 -m venv .venv
+python3 -m venv venv
 ```
