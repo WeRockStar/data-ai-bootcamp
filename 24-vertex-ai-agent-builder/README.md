@@ -1,6 +1,8 @@
 # Vertex AI Agent Builder - Conversation Agent 
-## Create Conversation Agent
-1. **ขั้นตอนที่ 1: สร้าง Agent ใหม่**  เริ่มต้นด้วยการคลิกสร้าง Agent ใหม่ใน Vertex AI Agent Builder.
+## Create Conversation Agent 
+1. **ขั้นตอนที่ 1: สร้าง Agent ใหม่**  
+เริ่มต้นด้วยการคลิกสร้าง Agent ใหม่ใน Vertex AI Agent Builder.
+ไปที่หน้า https://console.cloud.google.com/gen-app-builder/engines?project=dataaibootcamp
 ![alt text](../assets/24-1-create-agent.png)  
 
 2. **ขั้นตอนที่ 2: เลือกสร้าง Agent เอง**  เลือก "Build your own" เพื่อกำหนด Agent เองตามความต้องการ.
@@ -111,3 +113,35 @@
 - ช่วงนี้มีโปรไรบ้าง
 
 ![alt text](../assets/24-13-test-your-agent.png)
+
+
+## Run Python Detect Intent Playload
+
+
+1. เปลี่ยนไปยังโฟลเดอร์โปรเจกต์
+ใช้คำสั่ง cd เพื่อเปลี่ยนไปยังโฟลเดอร์ชื่อ 25-vertex-ai-search
+```
+cd 24-vertex-ai-agent-builder
+```
+
+2. คัดลอกไฟล์ตัวอย่างการตั้งค่า
+คำสั่ง cp ใช้เพื่อคัดลอกไฟล์ vertex_ai_secret.yml.example และเปลี่ยนชื่อเป็น vertex_ai_secret.yml เพื่อใช้เป็นไฟล์ตั้งค่าหลัก
+
+```
+cp vertex_ai_secret.yml.example vertex_ai_secret.yml
+```
+
+3. ติดตั้ง Dependencies ของโปรเจกต์
+ใช้คำสั่ง pip เพื่อติดตั้งไลบรารีทั้งหมดที่ระบุไว้ในไฟล์ requirements.txt
+
+```
+pip install -r requirements.txt
+```
+
+4. copy sa.json มาวางที่ Folder นี้ 
+
+5. ใช้คำสั่ง python เพื่อรันไฟล์ dialogflowcx_answer.py ซึ่งเป็นสคริปต์หลักของโปรเจกต์
+``
+python dialogflowcx_answer.py
+```
+
