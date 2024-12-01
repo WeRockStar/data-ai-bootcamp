@@ -27,3 +27,11 @@ tar -xf google-cloud-cli-linux-x86_64.tar.gz
 echo 'export PATH=$PATH:./google-cloud-sdk/bin' >> ~/.bashrc
 source ~/.bashrc
 ```
+
+6. Upload sa.json to this folder
+
+7. Aauthen Gcloud with Json 
+```
+gcloud auth activate-service-account --key-file="./sa.json"
+gcloud config set project dataaibootcamp
+```
