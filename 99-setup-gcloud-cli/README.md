@@ -21,3 +21,9 @@ tar -xf google-cloud-cli-linux-x86_64.tar.gz
 ```
 ./google-cloud-sdk/install.sh
 ```
+
+5. Add gcloud command 
+```
+echo 'export PATH=$PATH:./google-cloud-sdk/bin' >> ~/.bashrc
+source ~/.bashrc
+```
