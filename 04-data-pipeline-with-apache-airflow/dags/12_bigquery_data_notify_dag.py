@@ -23,10 +23,10 @@ default_args = {
 
 # Initialize the DAG
 with DAG(
-    "bigquery_to_line_notify",
+    "12_bigquery_to_line_notify",
     default_args=default_args,
     description="Run a BigQuery query, create Flex Message, and send LINE Notify",
-    schedule_interval="*/5 * * * *",  # Run every 5 minutes
+    schedule_interval="0 * * * *",  # Run every hours
     catchup=False,
 ) as dag:
 

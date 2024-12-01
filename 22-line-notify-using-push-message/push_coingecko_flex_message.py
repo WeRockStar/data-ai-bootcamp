@@ -34,7 +34,6 @@ crypto_data = {
 }
 
 
-
 def generate_crypto_flex(data):
     icon_img = {
         "bitcoin": "https://assets.coingecko.com/coins/images/1/standard/bitcoin.png",
@@ -139,12 +138,14 @@ def generate_crypto_flex(data):
         alt_text="Cryptocurrency Prices", contents=FlexContainer.from_dict(flex_bubles)
     )
 
+
 flex_message = generate_crypto_flex(crypto_data)
 
 
 outer_lib_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../"))
 sys.path.append(outer_lib_path)
 from commons.manage_secret import load_secrets
+
 load_secrets("line_secret.yml")
 
 configuration = Configuration(access_token=os.getenv("CHANNEL_ACCESS_TOKEN"))

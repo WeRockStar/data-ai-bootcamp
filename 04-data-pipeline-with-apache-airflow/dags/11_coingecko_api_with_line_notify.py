@@ -54,10 +54,10 @@ The DAG runs every 2 minutes.
 
 # Define the DAG
 with DAG(
-    "coingecko_api_with_line_notify",
+    "11_coingecko_api_with_line_notify",
     default_args=default_args,
     description="Collect data from CoinGecko API and send LINE notify",
-    schedule_interval="*/2 * * * *",  # Run every 2 minutes
+    schedule_interval="0 * * * *",  # Run every hour
     start_date=datetime(2024, 11, 20),
     catchup=False,
     doc_md=__doc__,

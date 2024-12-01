@@ -22,15 +22,16 @@ from linebot.v3.messaging import (
 )
 
 
-
 def handle_text_by_keyword(event, line_bot_api):
     text = event.message.text
-    
+
     if text == "my_profile":
         profile = line_bot_api.get_profile(user_id=event.source.user_id)
 
         with open("templates/profile_bubble.json") as profile_bubble_json:
             profile_bubble = profile_bubble_json.read()
+            if profile.status_message is None:
+                profile.status_message = ""
             profile_bubble = (
                 profile_bubble.replace("USER_PROFILE_URL", profile.picture_url)
                 .replace("LINE_USER_NAME", profile.display_name)
@@ -49,7 +50,7 @@ def handle_text_by_keyword(event, line_bot_api):
                     ],
                 )
             )
-    
+
     elif text == "emojis":
         emojis = [
             Emoji(index=0, product_id="5ac1bfd5040ab15980c9b435", emoji_id="001"),
@@ -61,7 +62,7 @@ def handle_text_by_keyword(event, line_bot_api):
                 messages=[TextMessage(text="$ LINE emoji $", emojis=emojis)],
             )
         )
-    
+
     elif text == "quota":
         quota = line_bot_api.get_message_quota()
         line_bot_api.reply_message(
@@ -73,7 +74,7 @@ def handle_text_by_keyword(event, line_bot_api):
                 ],
             )
         )
-    
+
     elif text == "quota_consumption":
         quota_consumption = line_bot_api.get_message_quota_consumption()
         line_bot_api.reply_message(
@@ -86,7 +87,7 @@ def handle_text_by_keyword(event, line_bot_api):
                 ],
             )
         )
-        
+
     elif text == "carousel":
         carousel_template = CarouselTemplate(
             columns=[
@@ -118,7 +119,7 @@ def handle_text_by_keyword(event, line_bot_api):
                 reply_token=event.reply_token, messages=[template_message]
             )
         )
-        
+
     elif text == "ค้นหาสินค้า":
         line_bot_api.reply_message(
             ReplyMessageRequest(
@@ -148,7 +149,7 @@ def handle_text_by_keyword(event, line_bot_api):
             response_dict=response_dict,
             search_query=search_query,
         )
-    
+
     else:
         response_text = detect_intent_text(text=text, session_id=event.source.user_id)
 
