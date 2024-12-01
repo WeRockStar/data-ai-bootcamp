@@ -13,13 +13,13 @@ from airflow.providers.google.cloud.transfers.gcs_to_bigquery import (
 log = logging.getLogger(__name__)
 
 # REPLACE_BUCKET_NAME_HERE !!!
-BUCKET_NAME = "deb-gemini-code-assist-data-ai-tao-001"
+BUCKET_NAME = "dataai-werockstar-007"
 
 # REPLACE_DESTINATION_PROJECT_DATASET_TABLE_HERE !!!
-DESTINATION_PROJECT_DATASET_TABLE = "dataai_tao_34.coingecko_price"
+DESTINATION_PROJECT_DATASET_TABLE = "dataai_werockstar_007.coingecko_price"
 
 with DAG(
-    dag_id="coingecko_data_pipeline",
+    dag_id="10_coingecko_data_pipeline",
     schedule="@hourly",
     start_date=pendulum.datetime(2024, 11, 30, tz="UTC"),
     catchup=False,
@@ -33,13 +33,12 @@ with DAG(
 
         execution_date = kwargs["execution_date"]
         filename = f"coingecko_price_{execution_date.format('YYYYMMDD')}.json"
-        bucket_name = BUCKET_NAME
         folder_name = "raw/coingecko"
 
         gcs_hook = GCSHook()
 
         gcs_hook.upload(
-            bucket_name=bucket_name,
+            bucket_name=BUCKET_NAME,
             object_name=f"{folder_name}/{filename}",  # Construct full path
             data=json.dumps(data),
         )
@@ -52,7 +51,7 @@ with DAG(
 
     load_data_to_bigquery_task = GCSToBigQueryOperator(
         task_id="load_data_to_bigquery",
-        bucket="deb-gemini-code-assist-data-ai-tao-001",
+        bucket=BUCKET_NAME,
         source_objects=["raw/coingecko/coingecko_price_*.json"],  # Wildcard path
         source_format="NEWLINE_DELIMITED_JSON",
         destination_project_dataset_table=DESTINATION_PROJECT_DATASET_TABLE,

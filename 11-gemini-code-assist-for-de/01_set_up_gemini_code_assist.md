@@ -2,33 +2,31 @@
 
 การ Set up Google Cloud Platform Environment เป็นการเตรียมความพร้อมทั้งในเรื่องของโปรเจกต์, บริการที่ต้องการใช้, รวมถึงการตั้งค่า Credential และ Environment ต่าง ๆ ที่เกี่ยวข้อง เพื่อให้พร้อมใช้งานอย่างเต็มรูปแบบ โดยมีขั้นตอนดังนี้:
 
-[1.0 Create New GCP Project]()  
+[1.0 Create New GCP Project]()
 
-[1.1 Enable API  - Gemini for Google Cloud]() 
+[1.1 Enable API - Gemini for Google Cloud]()
 
 [1.2 Create GSC bucket for Data Pipeline]()
 
-[1.3 Create Service Account for Airflow Access]() 
+[1.3 Create Service Account for Airflow Access]()
 
-[1.4 Create BigQuery Dataset]() 
+[1.4 Create BigQuery Dataset]()
 
 [1.5. Clone data from public Dataset : TheLook e-commerce]()
-
 
 ### วิธีการสร้าง GCP Project ผ่าน Google Cloud Console
 
 1. **ไปที่หน้า Google Cloud Console**
 2. **กรอกข้อมูลโปรเจคใหม่:**
-    - **Project Name**: ใส่ชื่อโปรเจคใหม่ที่ต้องการ (เช่น `My Gemini Code Assist`)
-    - **Project ID**: กำหนด `project_id` (หรือใช้ค่าที่แนะนำโดย Google)
-    - **Billing Account**: เลือกบัญชี Billing ที่ต้องการเชื่อมต่อ (หากยังไม่มี ให้สร้าง Billing Account ใหม่)
+   - **Project Name**: ใส่ชื่อโปรเจคใหม่ที่ต้องการ (เช่น `My Gemini Code Assist`)
+   - **Project ID**: กำหนด `project_id` (หรือใช้ค่าที่แนะนำโดย Google)
+   - **Billing Account**: เลือกบัญชี Billing ที่ต้องการเชื่อมต่อ (หากยังไม่มี ให้สร้าง Billing Account ใหม่)
 3. **คลิก `Create`** เพื่อสร้างโปรเจคใหม่
-4. อย่าลืมกด Link Billing 
-    
-    ![](../assets/link_billing_to_project.png)
+4. อย่าลืมกด Link Billing
 
+   ![](../assets/link_billing_to_project.png)
 
-## **1.1 Enable API  - Gemini for Google Cloud**
+## **1.1 Enable API - Gemini for Google Cloud**
 
 เพื่อเปิดใช้งาน API สำหรับ Gemini ใน Google Cloud คุณสามารถทำตามขั้นตอนดังนี้:
 
@@ -44,7 +42,7 @@ Click **Activate Cloud Shell** at the top of the Google Cloud console.
 gcloud services enable cloudshell.googleapis.com
 ```
 
-ประกาศตัวแปรเพื่อการ Setup 
+ประกาศตัวแปรเพื่อการ Setup
 
 - `[YOUR_PROJECT_ID]` ให้แก้เป็นชื่อ project ที่เราใช้ทำงาน
 - `[YOUR_NAME]` ให้แก้ไขชื่อ Bucket ที่จะสร้าง เป็นชื่อตัวเอง เช่น `data-ai-beat-1991`
@@ -56,7 +54,7 @@ export GCS_BUCKET_NAME="deb-gemini-code-assist-[YOUR_NAME]"
 
 ```jsx
 export SERVICE_ACCOUNT_NAME="sa-gemini-airflow"
-export BQ_DATASET_NAME="gemini_assist_workshop" 
+export BQ_DATASET_NAME="gemini_assist_workshop"
 
 echo $PROJECT_ID
 echo $GCS_BUCKET_NAME
@@ -65,7 +63,7 @@ echo $SERVICE_ACCOUNT_NAME
 
 ## 1.2 Create GSC bucket for Data Pipeline
 
- สร้าง Bucket ใหม่ เพื่อใช้ในการเป็น Data lake ของ Data pipeline ในการวาง ไฟล์ raw / processed
+สร้าง Bucket ใหม่ เพื่อใช้ในการเป็น Data lake ของ Data pipeline ในการวาง ไฟล์ raw / processed
 
 ```bash
 gsutil mb gs://$GCS_BUCKET_NAME/
@@ -123,13 +121,13 @@ bq --location=asia-southeast1 mk -d $PROJECT_ID:$BQ_DATASET_NAME
 
 ## 1.5. Clone data from public Dataset : TheLook e-commerce
 
-Enable BigQuery Transfer service. -  ต้องเปิดใช้งาน **BigQuery Data Transfer Service API** ในโปรเจคปลายทางก่อนใช้คำสั่งนี้:
+Enable BigQuery Transfer service. - ต้องเปิดใช้งาน **BigQuery Data Transfer Service API** ในโปรเจคปลายทางก่อนใช้คำสั่งนี้:
 
 ```bash
-gcloud services enable bigquerydatatransfer.googleapis.com 
+gcloud services enable bigquerydatatransfer.googleapis.com
 ```
 
-หากต้องการ clone ทั้ง dataset `thelook_ecommerce` ไปยังโปรเจค  และเก็บใน dataset ของเรา ชื่อ `gemini_assist_workshop`:
+หากต้องการ clone ทั้ง dataset `thelook_ecommerce` ไปยังโปรเจค และเก็บใน dataset ของเรา ชื่อ `gemini_assist_workshop`:
 
 ```bash
 

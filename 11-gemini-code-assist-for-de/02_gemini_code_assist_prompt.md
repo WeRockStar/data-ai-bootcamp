@@ -1,48 +1,54 @@
-
-# Gemini Code Assist for Data Engineering  - Prompt
-
+# Gemini Code Assist for Data Engineering - Prompt
 
 ## Generate unittest
 
 Prerequisites
 
 Before you begin, ensure the following:
+
 - Gemini Code Assist is installed: Follow the installation guide in the official documentation.
 - Configured project: Your project should be set up with a supported testing framework (e.g., pytest, unittest, etc.).
 - Access to source code: The source code to be tested should be accessible and properly structured.
 
 Step 1: Open the Code File
+
 - Open the file you want to create unit tests for in your preferred editor.
 - Ensure the file contains methods or classes that you intend to test.
 
 Step 2: Launch Gemini Code Assist
+
 - Open Gemini Code Assist within your IDE or development environment.
 - Select the Unit Test Generation feature from the main menu.
 
 Step 3: Select the Function or Class to Test
+
 - Highlight the specific function or class you want to test.
 - Right-click and select Generate Unit Test from the context menu (or use the shortcut specified in your environment).
 
 Step 4: Configure the Test Parameters
+
 - Gemini Code Assist allows you to configure the unit test generation process:
-    - Select the testing framework: Choose your preferred framework (e.g., pytest, unittest, etc.).
-    - Mocking preferences: Specify whether dependencies should be mocked automatically.
+  - Select the testing framework: Choose your preferred framework (e.g., pytest, unittest, etc.).
+  - Mocking preferences: Specify whether dependencies should be mocked automatically.
 
 Step 5: Generate the Unit Test
+
 - Click Generate.
 - Review the auto-generated test cases. Gemini Code Assist will create test methods.
 
 Step 6: Save and Review the Test File
+
 - Save the generated test file in the appropriate test directory (e.g., tests/).
 - Review the test cases to ensure they meet your project requirements.
 
 Step 7: Run the Tests
+
 - Execute the unit tests using your testing framework: python -m unittest tests/test_file_name.py
 - Verify that all tests pass or address any failing tests.
 
 ## DAG_1 - ingest data from API to BigQuery
 
-### 1. Prompt to Create Data Pipeline 
+### 1. Prompt to Create Data Pipeline
 
 ```
 Write an Airflow DAG to extract cryptocurrency price data from the CoinGecko API and load it into Google BigQuery. The DAG should:
@@ -53,11 +59,11 @@ Write an Airflow DAG to extract cryptocurrency price data from the CoinGecko API
    - Currencies: USD and THB.
    - Include additional metadata such as market cap, 24-hour volume, and last updated time.
 3. Save the API response to Google Cloud Storage (GCS) in JSON format with the following structure:
-   - **Bucket name**: `deb-gemini-code-assist-data-ai-tao-001`.
+   - **Bucket name**: `dataai-werockstar-007`.
    - **Folder**: `raw/coingecko`.
    - **Filename format**: `coingecko_price_<execution_date>.json` (e.g., `coingecko_price_20241130.json`).
 4. Load the JSON files into a BigQuery table:
-   - **BigQuery table**: `dataai_tao_34.coingecko_price`.
+   - **BigQuery table**: `dataai_werockstar_007.coingecko_price`.
    - **Configuration**:
      - Allow schema updates.
      - Append data to the table.
@@ -71,9 +77,10 @@ Include the following in the response:
 ```
 
 ### 2. Chat with you code after prompt is done
+
 ```
-Fix as the following 
-- Add Schedule to interval to every hour at 21:00 
+Fix as the following
+- Add Schedule to interval to every hour at 21:00
 - DAG's owner to `gemini-code-assist`
 ```
 
