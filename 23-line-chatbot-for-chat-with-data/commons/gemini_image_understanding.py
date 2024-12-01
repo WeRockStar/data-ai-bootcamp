@@ -5,7 +5,7 @@ import vertexai
 import vertexai.generative_models as genai
 
 GCP_PROJECT_ID = os.environ["GCP_PROJECT_ID"]
-# os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "privates/sa.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "privates/sa.json"
 
 
 def gemini_describe_image(user_id, message_id):
@@ -40,12 +40,3 @@ def gemini_describe_image(user_id, message_id):
 
     return data_dict
 
-
-if __name__ == "__main__":
-    from commons.manage_secret import load_secrets
-
-    load_secrets("line_secret.yml")
-    os.environ[
-        "GOOGLE_APPLICATION_CREDENTIALS"
-    ] = "/23-line-chatbot-for-chat-with-data/cred/sa.json"
-    gemini_describe_image("U851fc04bfa20819fd5b5c942329b5ac8", "531633189686083729")
