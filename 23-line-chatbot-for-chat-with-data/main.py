@@ -32,7 +32,6 @@ from commons.vertex_agent_search import vertex_search_retail_products
 from commons.flex_message_builder import build_flex_carousel_message
 
 
-
 YOUR_CHANNEL_ACCESS_TOKEN = os.environ["CHANNEL_ACCESS_TOKEN"]
 YOUR_CHANNEL_SECRET = os.environ["CHANNEL_SECRET"]
 
@@ -79,14 +78,51 @@ def handle_image_message(event):
         ShowLoadingAnimationRequest(chat_id=event.source.user_id)
     )
 
-    # message_content = line_bot_blob_api.get_message_content(message_id=event.message.id)
-    
+    message_content = line_bot_blob_api.get_message_content(message_id=event.message.id)
+
+    # copy from snippet/handle_image.py
+    upload_blob_from_memory(
+        contents=message_content,
+        user_id=event.source.user_id,
+        message_id=event.message.id,
+        type="image",
+    )
+
+    image_description = gemini_describe_image(
+        user_id=event.source.user_id,
+        message_id=event.message.id,
+    )
+
+    if image_description:
+        line_bot_api.push_message(
+            PushMessageRequest(
+                to=event.source.user_id,
+                messages=[TextMessage(text=str(image_description))],
+            )
+        )
+        response_dict = vertex_search_retail_products(
+            image_description["product_description"]
+        )
+        build_flex_carousel_message(
+            line_bot_api=line_bot_api,
+            event=event,
+            response_dict=response_dict,
+            search_query=image_description["product_description"],
+            additional_explain=image_description["explaination"],
+        )
+
     line_bot_api.reply_message(
         ReplyMessageRequest(
-            reply_token=event.reply_token, messages=[TextMessage(text="Thank you for sending image")]
+            reply_token=event.reply_token,
+            messages=[TextMessage(text="Thank you for sending image")],
         )
     )
-    
+
+    # line_bot_api.reply_message(
+    #     ReplyMessageRequest(
+    #         reply_token=event.reply_token, messages=[TextMessage(text="Thank you for sending image")]
+    #     )
+    # )
 
 
 @handler.add(MessageEvent, message=AudioMessageContent)
@@ -96,7 +132,8 @@ def handle_audio_message(event):
     )
     line_bot_api.reply_message(
         ReplyMessageRequest(
-            reply_token=event.reply_token, messages=[TextMessage(text="Thank you for sending audio")]
+            reply_token=event.reply_token,
+            messages=[TextMessage(text="Thank you for sending audio")],
         )
     )
 
@@ -111,10 +148,10 @@ def handle_location_message(event):
     longitude = event.message.longitude
     line_bot_api.reply_message(
         ReplyMessageRequest(
-            reply_token=event.reply_token, messages=[TextMessage(text=f"Your location is {latitude}, {longitude}")]
+            reply_token=event.reply_token,
+            messages=[TextMessage(text=f"Your location is {latitude}, {longitude}")],
         )
     )
-
 
 
 @handler.add(MessageEvent, message=StickerMessageContent)
@@ -133,5 +170,3 @@ def handle_sticker_message(event):
             ],
         )
     )
-
-

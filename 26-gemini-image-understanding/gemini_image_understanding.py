@@ -6,11 +6,10 @@ import vertexai
 import vertexai.generative_models as genai
 
 
-
 def gemini_describe_image(user_id, message_id):
     GCP_PROJECT_ID = os.environ["GCP_PROJECT_ID"]
     vertexai.init(project=GCP_PROJECT_ID, location="us-central1")
-    gsc_image_path = "gs://vertex_ai_search_data_9999/LINEUSER/test/image/001.jpg"
+    gsc_image_path = "gs://vertex_ai_search_data_werockstar/LINEUSER/test/image/001.jpg"
     print(gsc_image_path)
 
     image_file = genai.Part.from_uri(
@@ -43,8 +42,9 @@ if __name__ == "__main__":
     outer_lib_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../"))
     sys.path.append(outer_lib_path)
     from commons.manage_secret import load_secrets
+
     load_secrets("vertex_ai_secret.yml")
-    
+
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "sa.json"
     response = gemini_describe_image("test", "001")
     print(response)

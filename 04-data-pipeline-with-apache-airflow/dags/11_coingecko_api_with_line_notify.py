@@ -67,7 +67,7 @@ with DAG(
     def collect_coingecko_data(**kwargs):
         api_url = "https://api.coingecko.com/api/v3/simple/price"
         params = {
-            "ids": "bitcoin,ethereum,tether",
+            "ids": "bitcoin,ethereum,tether,doge",
             "vs_currencies": "usd,thb",
             "include_market_cap": "true",
             "include_24hr_vol": "true",
@@ -84,6 +84,7 @@ with DAG(
             "bitcoin": "https://assets.coingecko.com/coins/images/1/standard/bitcoin.png",
             "ethereum": "https://assets.coingecko.com/coins/images/279/standard/ethereum.png",
             "tether": "https://assets.coingecko.com/coins/images/325/standard/Tether.png",
+            "doge": "https://assets.coingecko.com/coins/images/5/standard/dogecoin.png",
         }
         contents = []
         for name, info in data.items():
