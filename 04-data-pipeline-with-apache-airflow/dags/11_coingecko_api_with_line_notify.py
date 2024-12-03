@@ -1,5 +1,5 @@
 from airflow import DAG
-from airflow.operators.python import PythonOperator
+from airflow.operators.python import PythonOperator, BranchPythonOperator
 from airflow.models import Variable
 import requests
 from datetime import datetime, timedelta
@@ -11,6 +11,7 @@ from linebot.v3.messaging import (
     FlexMessage,
     FlexContainer,
 )
+import pendulum
 
 # Define default arguments for the DAG
 default_args = {
@@ -58,7 +59,7 @@ with DAG(
     default_args=default_args,
     description="Collect data from CoinGecko API and send LINE notify",
     schedule_interval="0 * * * *",  # Run every hour
-    start_date=datetime(2024, 11, 20),
+    start_date=datetime(2024, 11, 20, tzinfo=pendulum.timezone("Asia/Bangkok")),
     catchup=False,
     doc_md=__doc__,
 ) as dag:
@@ -67,7 +68,7 @@ with DAG(
     def collect_coingecko_data(**kwargs):
         api_url = "https://api.coingecko.com/api/v3/simple/price"
         params = {
-            "ids": "bitcoin,ethereum,tether,doge",
+            "ids": "bitcoin,ethereum,tether,dogecoin",
             "vs_currencies": "usd,thb",
             "include_market_cap": "true",
             "include_24hr_vol": "true",
@@ -84,7 +85,7 @@ with DAG(
             "bitcoin": "https://assets.coingecko.com/coins/images/1/standard/bitcoin.png",
             "ethereum": "https://assets.coingecko.com/coins/images/279/standard/ethereum.png",
             "tether": "https://assets.coingecko.com/coins/images/325/standard/Tether.png",
-            "doge": "https://assets.coingecko.com/coins/images/5/standard/dogecoin.png",
+            "dogecoin": "https://assets.coingecko.com/coins/images/5/standard/dogecoin.png",
         }
         contents = []
         for name, info in data.items():
@@ -207,9 +208,28 @@ with DAG(
         python_callable=collect_coingecko_data,
     )
 
+    def conditional_task():
+        now = datetime.now().astimezone(pendulum.timezone("Asia/Bangkok"))
+        if now.hour > 7 and now.hour < 23:
+            return "send_line_notify_task"
+        return "skip_send_line_notify_task"
+
+    branch_task = BranchPythonOperator(
+        task_id="branch_task", python_callable=conditional_task
+    )
+
+    skip_send_line_notify_task = PythonOperator(
+        task_id="skip_send_line_notify_task",
+        python_callable=lambda: print("Skipping send_line_notify_task"),
+    )
+
     send_line_notify_task = PythonOperator(
         task_id="send_line_notify_task",
         python_callable=send_line_notify,
     )
 
-    collect_coingecko_data_task >> send_line_notify_task
+    (
+        collect_coingecko_data_task
+        >> branch_task
+        >> [send_line_notify_task, skip_send_line_notify_task]
+    )
